@@ -1,0 +1,51 @@
+{
+  "name": "Test Sync Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "test-sync",
+        "responseMode": "responseNode"
+      },
+      "id": "test-webhook",
+      "name": "Test Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "test-sync-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Test workflow for sync functionality\nconst timestamp = new Date().toISOString();\nconst workflowInfo = {\n  name: 'Test Sync Workflow',\n  description: 'This workflow tests the sync functionality',\n  timestamp: timestamp,\n  environment: process.env.NODE_ENV || 'development',\n  syncTest: true\n};\n\nreturn {\n  json: {\n    success: true,\n    message: 'Sync test workflow executed successfully',\n    data: workflowInfo,\n    instructions: [\n      '1. This workflow was synced from local to production',\n      '2. Test the webhook endpoint to verify it works',\n      '3. Export this workflow to test reverse sync'\n    ]\n  }\n};"
+      },
+      "id": "test-code",
+      "name": "Test Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Test Webhook": {
+      "main": [
+        [
+          {
+            "node": "Test Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "test-sync-workflow",
+  "tags": ["test", "sync", "demo"]
+} 
