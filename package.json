@@ -1,0 +1,28 @@
+{
+  "name": "n8n-workflows",
+  "version": "1.0.0",
+  "description": "n8n workflows with automated deployment",
+  "main": "index.js",
+  "scripts": {
+    "start": "n8n start",
+    "dev": "n8n start --tunnel",
+    "build": "echo 'No build step required for n8n'",
+    "test": "echo 'Add your test scripts here'",
+    "deploy": "node scripts/deploy.js",
+    "backup": "node scripts/backup.js",
+    "sync": "node scripts/sync.js"
+  },
+  "keywords": ["n8n", "automation", "workflows"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "n8n": "^1.28.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
